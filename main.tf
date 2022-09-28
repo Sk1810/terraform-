@@ -18,7 +18,7 @@ resource "aws_s3_bucket_acl" "s3_bucket_acl" {
 }
 
 resource "aws_s3_bucket_public_access_block" "s3_bucket_public_access_block" {
-  provider                = aws.sea_region
+  provider                = aws.us_region
   bucket                  = aws_s3_bucket.sk_s3_bucket.id
   block_public_acls       = true
   block_public_policy     = true
