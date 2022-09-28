@@ -4,9 +4,7 @@ variable "fe_domain_name" {
 }
 
 variable "STAGE" {
-  type = string
-   default     = "hello"
-  description = "Stage for deployment"
+  type = "map"
 }
 
 variable "DEFAULT_TAGS" {
