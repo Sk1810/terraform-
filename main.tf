@@ -5,8 +5,4 @@ resource "aws_acm_certificate" "cert" {
   tags = {
     Environment = "test"
   }
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }    
