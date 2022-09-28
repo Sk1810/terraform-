@@ -1,13 +1,19 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
 provider "aws" {
-  region = "us-east-1"
+    region = "ap-southeast-1"
+    alias = "sea_region"
 }
-terraform {
-  required_version = ">= 0.12"
+
+provider "aws" {
+    region = "ap-south-1"
+    alias = "in_region"
+}
+
+provider "aws" {
+    region = "us-east-1"
+    alias = "us_region"
+}
+
+provider "aws" {
+    region = "eu-north-1"
+    alias = "eu_region"
 }
