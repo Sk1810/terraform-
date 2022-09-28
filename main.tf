@@ -1,8 +1,8 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "skarthick.com"
+  domain_name       = "sk.decode.io"
   validation_method = "DNS"
 
   tags = {
-    Environment = "test"
+    Environment = "sk"
   }
 }    
