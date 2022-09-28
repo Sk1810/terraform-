@@ -5,4 +5,4 @@ DEFAULT_TAGS = {
     Product     =   "SK_DX"
 }
 
-Stage = sk
+
