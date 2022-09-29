@@ -1,4 +1,4 @@
-variable "fe_domain_name" {
+variable "sk-domain-name" {
   type = string
   description = "Frontend Domain Name"
 }
