@@ -1,4 +1,4 @@
-fe_domain_name = "sk-domain-name"
+sk-domain-name = "sk-hello"
 
 DEFAULT_TAGS = {
     CreatedBy   =   "Terraform"
