@@ -7,7 +7,7 @@ resource "aws_acm_certificate" "cert" {
 
 resource "aws_s3_bucket" "sk_s3_bucket" {
   provider = aws.us_region
-  bucket   = var.fe_domain_name
+  bucket   = var.sk-domain-name
   tags     = var.DEFAULT_TAGS
 }
 
