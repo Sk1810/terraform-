@@ -1,4 +1,4 @@
-fe_domain_name = "skstudyview.getdecode.io"
+fe_domain_name = "sk-domain-name"
 
 DEFAULT_TAGS = {
     CreatedBy   =   "Terraform"
