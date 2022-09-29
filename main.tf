@@ -26,15 +26,16 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket_public_access_block" {
   restrict_public_buckets = true
 }
 
-locals {
-  s3_origin_id = "myS3Origin"
-}
-
 resource "aws_cloudfront_origin_access_identity" "origin_identity" {
   provider = aws.us_region
   comment  = var.sk-bucket-name
 }
 # CF Distribution
+
+locals {
+  s3_origin_id = "myS3Origin"
+}
+
 resource "aws_cloudfront_distribution" "fe_distribution" {
   provider = aws.us_region
 
