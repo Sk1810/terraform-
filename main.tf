@@ -25,3 +25,25 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket_public_access_block" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+locals {
+  s3_origin_id = "myS3Origin"
+}
+
+resource "aws_cloudfront_origin_access_identity" "origin_identity" {
+  provider = aws.us_region
+  comment  = var.sk-bucket-name
+}
+# CF Distribution
+resource "aws_cloudfront_distribution" "fe_distribution" {
+  provider = aws.us_region
+
+  origin {
+    domain_name = aws_s3_bucket.sk_s3_buckt.bucket_regional_domain_name
+    origin_id   = var.s3_origin_id
+    
+    s3_origin_config {
+      origin_access_identity = "origin-access-identity/cloudfront/${aws_cloudfront_origin_access_identity.origin_identity.id}"
+    }
+  }
+} 
