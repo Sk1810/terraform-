@@ -5,4 +5,4 @@ DEFAULT_TAGS = {
     Product     =   "SK_DX"
 }
 
-sk-bucket-name = "hello-sk-bucket"
+sk-bucket-name = "hello-k-bucket"
