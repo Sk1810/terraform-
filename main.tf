@@ -32,19 +32,51 @@ resource "aws_cloudfront_origin_access_identity" "origin_identity" {
 }
 # CF Distribution
 
-locals {
-  s3_origin_id = "myS3Origin"
-}
+
 
 resource "aws_cloudfront_distribution" "fe_distribution" {
   provider = aws.us_region
 
   origin {
     domain_name = aws_s3_bucket.sk_s3_buckt.bucket_regional_domain_name
-    origin_id   = var.s3_origin_id
+    origin_id   = var.sk-bucket-name
     
     s3_origin_config {
       origin_access_identity = "origin-access-identity/cloudfront/${aws_cloudfront_origin_access_identity.origin_identity.id}"
     }
   }
 } 
+aliases = ["skkarthick.com"]
+
+default_root_object = "index.html"
+
+enabled = true
+
+ default_cache_behavior {
+    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
+    cached_methods             = ["GET", "HEAD"]
+    viewer_protocol_policy     = "redirect-to-https"
+    compress                   = true
+    target_origin_id           = var.sk-bucket-name
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 86400
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = false
+    acm_certificate_arn            = var.sk-bucket-name
+    ssl_support_method             = "sni-only"
+  }
+
+ 
