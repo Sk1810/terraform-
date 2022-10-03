@@ -45,7 +45,7 @@ resource "aws_cloudfront_distribution" "fe_distribution" {
       origin_access_identity = "origin-access-identity/cloudfront/${aws_cloudfront_origin_access_identity.origin_identity.id}"
     }
   }
-} 
+  
 aliases = ["skkarthick.com"]
 
 default_root_object = "index.html"
@@ -78,5 +78,5 @@ enabled = true
     acm_certificate_arn            = var.sk-bucket-name
     ssl_support_method             = "sni-only"
   }
-
+}
  
